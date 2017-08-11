@@ -1,4 +1,6 @@
-#pragma once
+#ifndef LIGHTS_DYNAMICLIGHT_MANAGER_H
+#define LIGHTS_DYNAMICLIGHT_MANAGER_H
+
 #include "cocos2d.h"
 #include "DynamicLight.h"
 
@@ -29,4 +31,4 @@ public:
 
 	CREATE_FUNC(DynamicLightManager)
 };
-
+#endif /* LIGHTS_DYNAMICLIGHT_MANAGER_H */
