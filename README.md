@@ -1,5 +1,7 @@
 # Cocos2d-Light2D
-Shader based simple 2d dynamic light engine (WIP).
+Shader based simple 2d dynamic lighting engine (WIP).
+
+A lot of the code is based on https://github.com/mattdesl/lwjgl-basics/wiki/2D-Pixel-Perfect-Shadows
 
 ![Demo](https://github.com/zerodarkzone/Cocos2d-Light2D/blob/master/test.gif "demo shadow") ![Demo](https://github.com/zerodarkzone/Cocos2d-Light2D/blob/master/test2.gif "demo shadow2")
 
