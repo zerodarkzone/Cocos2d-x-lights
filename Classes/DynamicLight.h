@@ -1,5 +1,5 @@
-#ifndef AVALON_GRAPHICS_DYNAMICLIGHT_H
-#define AVALON_GRAPHICS_DYNAMICLIGHT_H
+#ifndef LIGHTS_DYNAMICLIGHT_H
+#define LIGHTS_DYNAMICLIGHT_H
 
 #include "cocos2d.h"
 class DynamicLightManager;
@@ -66,4 +66,4 @@ public:
 	int getUpScale();
 	const cocos2d::Color4B& getColor();
 };
-#endif /* AVALON_GRAPHICS_DYNAMICLIGHT_H */
+#endif /* LIGHTS_DYNAMICLIGHT_H */
