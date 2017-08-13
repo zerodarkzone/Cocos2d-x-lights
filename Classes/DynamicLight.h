@@ -60,7 +60,7 @@ public:
 	void setAccuracy(float accuracy);
 	void setAdditive(bool additive);
 	void setColor(const cocos2d::Color4B& color);
-	void setShadowCasters(cocos2d::Node* casters);
+	void setShadowCasters(cocos2d::Sprite* casters);
 
 	int getLightSize();
 	int getUpScale();

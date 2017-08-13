@@ -138,15 +138,16 @@ void DynamicLight::initFinalShadowMap(Texture2D *texture)
 	finalShadowMapSprite->retain();
 }
 
-void DynamicLight::setShadowCasters(Node* casters)
+void DynamicLight::setShadowCasters(Sprite* casters)
 {
 	CC_SAFE_RELEASE(shadowCasters);
 
 	bakedMapIsValid = false;
 
-	shadowCasters = Sprite::createWithTexture(dynamic_cast<Sprite*>(casters)->getTexture());
+	shadowCasters = Sprite::createWithTexture(casters->getTexture());
+	shadowCasters->setContentSize(shadowCasters->getContentSize() / downScale);
 	shadowCasters->setAnchorPoint(casters->getAnchorPoint());
-	shadowCasters->setPosition(casters->getPosition());
+	shadowCasters->setPosition(casters->getPosition() / downScale);
 	shadowCasters->retain();
 }
 
