@@ -1,5 +1,4 @@
 #include "DynamicLightManager.h"
-#include "Utils.h"
 
 USING_NS_CC;
 
@@ -62,7 +61,7 @@ void DynamicLightManager::update(float dt)
 void DynamicLightManager::addLightSource(DynamicLight * lightSource, std::string name)
 {
 	if (name == "")
-		name = defaultName + myUtils::to_string(defaultNameLights++);
+		name = defaultName + std::to_string(defaultNameLights++);
 	lightSource->setName(name);
 	lightSources.insert(name, lightSource);
 }
