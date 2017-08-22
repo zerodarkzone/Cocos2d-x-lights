@@ -20,6 +20,7 @@ auto shadowCasters = Sprite::create("shadowCasters.png");
 
 // light without use of a light texture
 auto light1 = DynamicLight::create();
+light1->setShadowCasters(shadowCasters);
 light1->setSoftShadows(true);
 light1->setAdditive(true);
 light1->setLightSize(256);
@@ -30,6 +31,7 @@ lightManager->addLightSource(light1);
 // light with light texture. Can be used to create spotLights (see light2.png inside images folder)
 auto lightSpr = Sprite::create("light2.png");
 auto light2 = DynamicLight::create(lightSpr->getTexture());
+light2->setShadowCasters(shadowCasters);
 light2->setSoftShadows(true);
 light2->setAdditive(true);
 light2->setLightSize(512);
