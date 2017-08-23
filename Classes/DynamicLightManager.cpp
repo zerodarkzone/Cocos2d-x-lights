@@ -14,22 +14,9 @@ bool DynamicLightManager::init()
 }
 
 void DynamicLightManager::initDarkArea()
-{
-	CC_SAFE_RELEASE(darkArea);
-	CC_SAFE_RELEASE(darkAreaSprite);
-	auto visibleSize = Director::getInstance()->getVisibleSize() / DynamicLight::downScale;
-
-	darkArea = RenderTexture::create(visibleSize.width, visibleSize.height);
-	darkArea->retain();
-
-	darkAreaSprite = Sprite::createWithTexture(darkArea->getSprite()->getTexture());
-	darkAreaSprite->setCameraMask((unsigned short)CameraFlag::USER1, true);
-	darkAreaSprite->setBlendFunc({ GL_DST_COLOR ,GL_ONE_MINUS_SRC_ALPHA });
-	darkAreaSprite->setAnchorPoint({ 0, 0 });
-	darkAreaSprite->setFlippedY(true);
-	darkAreaSprite->getTexture()->setAntiAliasTexParameters();
-	darkAreaSprite->setScale(DynamicLight::downScale);
-	darkAreaSprite->retain();
+{	
+	auto visibleSize = Director::getInstance()->getVisibleSize();
+	setAmbientSize(visibleSize);
 }
 
 DynamicLightManager::~DynamicLightManager()
