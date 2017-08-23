@@ -39,8 +39,7 @@ private:
 	void createShadowMap();
 	void updateShadowMap();
 
-	void drawLight();
-	void DebugdrawLight(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, bool transformUpdated);
+	void drawLight();	
 public:
 	static DynamicLight* create(cocos2d::Texture2D *texture = nullptr);
 	static const int downScale;
