@@ -18,7 +18,7 @@ auto shadowCasters = Sprite::create("shadowCasters.png");
 
 // add some lights
 
-// light without use of a light texture
+// light without using a light texture
 auto light1 = DynamicLight::create();
 light1->setShadowCasters(shadowCasters);
 light1->setSoftShadows(true);
