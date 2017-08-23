@@ -216,32 +216,7 @@ void DynamicLight::drawLight()
 		else
 			finalShadowMapSprite->setBlendFunc({ GL_SRC_COLOR , GL_ONE });
 		finalShadowMapSprite->setPosition((getPositionX() + finalSize / 2) / 2, (getPositionY() + finalSize / 2) / 2);
-	}
-	//if (debugDrawEnabled)
-		//DebugdrawLight(renderer, transform, flags);
-}
-
-void DynamicLight::DebugdrawLight(cocos2d::Renderer * renderer, const cocos2d::Mat4 & transform, bool transformUpdated)
-{
-	auto glView = Director::getInstance()->getOpenGLView();
-	auto width = glView->getDesignResolutionSize().width;
-	auto height = glView->getDesignResolutionSize().height;
-
-	auto occlusionX = width - lightSize / 2;
-	auto occlusionY = height - lightSize / 2;
-
-	auto shadowX = width - lightSize / 2;
-	auto shadowY = height - lightSize / 2 - 15;
-
-	occlusionMap->getSprite()->setColor(Color3B::RED);
-	occlusionMap->setAnchorPoint({ 0, 0 });
-	occlusionMap->setPosition({ occlusionX, occlusionY });
-	occlusionMap->visit(renderer, transform, transformUpdated);
-	occlusionMap->getSprite()->setColor(Color3B::WHITE);
-
-	shadowMap1D->setAnchorPoint({ 0, 0 });
-	shadowMap1D->setPosition({ shadowX, shadowY });
-	shadowMap1D->visit(renderer, transform, transformUpdated);
+	}	
 }
 
 void DynamicLight::updateUniforms()
