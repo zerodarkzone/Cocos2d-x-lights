@@ -21,29 +21,24 @@ const float THRESHOLD = 0.75;
 void main(void) {
 
     float distance = 1.0;
-
-    for (float y=0.0; y<resolution.y; y+=accuracy) {
-        //rectangular to polar filter
-        vec2 norm = vec2(v_texCoord.s, y/resolution.y) * 2.0 - 1.0;
-        float theta = PI*1.5 + norm.x * PI;
-        float r = (1.0 + norm.y) * 0.5;
-
+	float theta = PI*1.5 + (v_texCoord.s * 2.0 - 1.0) * PI;
+	float add = accuracy / resolution.y;
+	vec2 pre_coord = vec2(sin(theta), cos(theta)) * 0.5;
+	
+    for (float r = 0.0; r < 1.0; r+=add) {
+               
         //coord which we will sample from occlude map
-        vec2 coord = vec2(-r * sin(theta), -r * cos(theta))/2.0 + 0.5;
+        vec2 coord = -r * pre_coord + 0.5;
 
         //sample the occlusion map
         vec4 data = texture2D(CC_Texture0, coord);
-
-        //the current distance is how far from the top we've come
-        float dst = y / resolution.y / upScale;
-
+        
         //if we've hit an opaque fragment (occluder), then get new distance
         //if the new distance is below the current, then we'll use that for our ray
-        float caster = data.a;
-        if (caster > THRESHOLD) {
-            distance = dst;
+        if (data.a > THRESHOLD) {
+            distance = r;
 			break;
         }
     }
-    gl_FragColor = vec4(distance,0.0, 0.0, 1.0);
+    gl_FragColor = vec4(distance / upScale, 0.0, 0.0, 1.0);
 }
